@@ -1,0 +1,22 @@
+name: Run DB Migrations
+on: 
+  workflow_call:
+    inputs:
+      ENVIRONMENT:
+        description: Environment from which the variables will be set
+        required: true
+        type: string
+
+jobs:
+  migrate:
+    environment: ${{ inputs.ENVIRONMENT }}
+    runs-on: ubuntu-latest
+    name: Run DB Migration - ${{ inputs.ENVIRONMENT }}    
+    container: 
+      image: migrate/migrate
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Run Migrate
+        run: migrate -verbose -path ${{ vars.POSTGRES_DATABASE }}/migrations/changes -database postgres://${{ vars.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@${{ vars.POSTGRES_HOST }}:${{ vars.POSTGRES_PORT }}/${{ vars.POSTGRES_DATABASE }} ${{ vars.MIGRATION_COMMAND }}
