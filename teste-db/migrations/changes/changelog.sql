@@ -12,3 +12,10 @@ CREATE TABLE testTable2(
 );
 --rollback DROP TABLE
 --rollback testTable2
+
+--changeset stevedonie:create-test-table3
+CREATE TABLE testTable3(
+  columnName1 VARCHAR (355)
+);
+--rollback DROP TABLE
+--rollback testTable3
