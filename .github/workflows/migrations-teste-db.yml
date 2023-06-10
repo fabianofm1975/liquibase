@@ -18,7 +18,7 @@ jobs:
         uses: fabianofm1975/actions/.github/workflows/run-local-migration.yml@master
         with:
           BASE_FOLDER: teste-db
-          ENVIRONMENT: NonProduction-DB
+          ENVIRONMENT: teste-db-local
 
   calling-migration-stg:
         if: ${{ github.event_name == 'pull_request' }}
@@ -26,7 +26,7 @@ jobs:
         name: Call Migrate - STG
         uses: fabianofm1975/actions/.github/workflows/run-db-migration.yml@master
         with:
-          ENVIRONMENT: NonProduction-DB
+          ENVIRONMENT: teste-db-stg
         secrets: inherit
 
   calling-migration-prd:
@@ -35,7 +35,7 @@ jobs:
         name: Call Migrate - PRD
         uses: fabianofm1975/actions/.github/workflows/run-db-migration.yml@master
         with:
-          ENVIRONMENT: Production-DB
+          ENVIRONMENT: teste-db-prd
         secrets: inherit
 
 
