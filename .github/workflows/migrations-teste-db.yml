@@ -17,7 +17,6 @@ jobs:
         name: Call Migrate - Local
         uses: fabianofm1975/liquibase/.github/workflows/run-local-migration.yml@master
         with:
-          BASE_FOLDER: teste-db
           ENVIRONMENT: teste-db-local
 
   calling-migration-stg:
