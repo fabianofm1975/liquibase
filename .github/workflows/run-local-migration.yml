@@ -17,11 +17,10 @@ jobs:
 
       - name: Liquibase Update Action
         uses: liquibase-github-actions/update@v4.21.1
-        env:
-          password: "${{ secrets.POSTGRES_PASSWORD }}"
-          username: "${{ vars.POSTGRES_USER }}"
         with:
           changelogFile: "${{ vars.POSTGRES_DATABASE }}/migrations/changes/postgres.changelog.sql"
+          password: "${{ secrets.POSTGRES_PASSWORD }}"
+          username: "${{ vars.POSTGRES_USER }}"
           url: "jdbc:postgresql://${{ vars.POSTGRES_HOST }}:${{ vars.POSTGRES_PORT }}/${{ vars.POSTGRES_DATABASE }}"          
           rollbackOnError: true
           showSummary: "VERBOSE"          
