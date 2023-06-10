@@ -23,6 +23,6 @@ jobs:
           rollbackOnError: true
           showSummary: "VERBOSE"
           username: "${{ vars.POSTGRES_USER }}"
-          password: "Stone@2023!"
+          password: "${{ secrets.POSTGRES_PASSWORD }}"
           logLevel: INFO
           headless: true
