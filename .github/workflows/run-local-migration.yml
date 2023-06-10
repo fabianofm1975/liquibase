@@ -18,9 +18,8 @@ jobs:
         uses: liquibase-github-actions/update@v4.21.1
         with:
           classpath: "${{ vars.POSTGRES_DATABASE }}/migrations/changes/"
-          changelogFile: "postgres.changelog.sql"          
-          username: ${{ vars.POSTGRES_USER }}
-          url: "jdbc:postgresql://${{ vars.POSTGRES_HOST }}:${{ vars.POSTGRES_PORT }}/${{ vars.POSTGRES_DATABASE }}"          
+          changelogFile: "postgres.changelog.sql"  
           rollbackOnError: true
-          showSummary: "VERBOSE"        
-          password: ${{ secrets.POSTGRES_PASSWORD }}
+          showSummary: "VERBOSE" 
+          url: "jdbc:postgresql://${{ vars.POSTGRES_HOST }}:${{ vars.POSTGRES_PORT }}/${{ vars.POSTGRES_DATABASE }}?user=${{ vars.POSTGRES_USER }}&password=${{ secrets.POSTGRES_PASSWORD }}"          
+       
