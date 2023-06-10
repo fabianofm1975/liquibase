@@ -26,3 +26,10 @@ CREATE TABLE testTable4(
 );
 --rollback DROP TABLE
 --rollback testTable4
+
+--changeset Fabiano Melo:PR 001
+CREATE TABLE testTable5(
+  columnName1 VARCHAR (355)
+);
+--rollback DROP TABLE
+--rollback testTable5
