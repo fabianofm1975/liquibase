@@ -26,7 +26,7 @@ jobs:
           url: "jdbc:postgresql://${{ vars.POSTGRES_HOST }}:${{ vars.POSTGRES_PORT }}/${{ vars.POSTGRES_DATABASE }};"
           password: "${{ secrets.POSTGRES_PASSWORD }}"
           rollbackOnError: "true"
-          showSummary: "true"
+          showSummary: "VERBOSE"
           username: "${{ vars.POSTGRES_USER }}"
 
       #- name: Liquibase Rollback Action
@@ -35,5 +35,5 @@ jobs:
       #    changelogFile: "${{ vars.POSTGRES_DATABASE }}/migrations/changes/postgres.changelog.sql"
       #    url: "jdbc:postgresql://${{ vars.POSTGRES_HOST }}:${{ vars.POSTGRES_PORT }}/${{ vars.POSTGRES_DATABASE }};"
       #    password: "${{ secrets.POSTGRES_PASSWORD }}"
-      #    showSummary: "true"
+      #    showSummary: "VERBOSE"
       #    username: "${{ vars.POSTGRES_USER }}"
