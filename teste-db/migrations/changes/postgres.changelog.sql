@@ -1,7 +1,4 @@
 --changeset Fabiano Melo id:PR 001
 
-create table fabiano2 ();
+create table fabiano ();
 
---changeset Fabiano Melo id:PR 002
-
-create table fabiano3 ();
