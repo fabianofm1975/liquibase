@@ -18,6 +18,7 @@ jobs:
         uses: fabianofm1975/liquibase/.github/workflows/run-local-migration.yml@master
         with:
           ENVIRONMENT: teste-db-local
+        secrets: inherit
 
   calling-migration-stg:
         if: ${{ github.event_name == 'pull_request' }}
