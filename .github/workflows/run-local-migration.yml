@@ -24,5 +24,5 @@ jobs:
           showSummary: "VERBOSE"
           username: "${{ vars.POSTGRES_USER }}"
           password: "${{ secrets.POSTGRES_PASSWORD }}"
-          logLevel: FINE
+          logLevel: INFO
           headless: true
