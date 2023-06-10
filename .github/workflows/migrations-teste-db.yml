@@ -18,6 +18,7 @@ jobs:
         uses: fabianofm1975/actions/.github/workflows/run-local-migration.yml@master
         with:
           BASE_FOLDER: teste-db
+          ENVIRONMENT: NonProduction-DB
 
   calling-migration-stg:
         if: ${{ github.event_name == 'pull_request' }}
