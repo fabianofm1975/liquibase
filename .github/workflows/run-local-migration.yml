@@ -20,7 +20,7 @@ jobs:
         with:
           changelogFile: "${{ vars.POSTGRES_DATABASE }}/migrations/changes/postgres.changelog.sql"
           password: "${{ secrets.POSTGRES_PASSWORD }}"
-          username: "${{ vars.POSTGRES_USER }}"
+          username: "${{ vars.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}"
           url: "jdbc:postgresql://${{ vars.POSTGRES_HOST }}:${{ vars.POSTGRES_PORT }}/${{ vars.POSTGRES_DATABASE }}"          
           rollbackOnError: true
           showSummary: "VERBOSE"          
