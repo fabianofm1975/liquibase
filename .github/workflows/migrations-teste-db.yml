@@ -15,7 +15,7 @@ on:
 jobs:
   calling-migration-local:
         name: Call Migrate - Local
-        uses: fabianofm1975/actions/.github/workflows/run-local-migration.yml@master
+        uses: fabianofm1975/liquibase/.github/workflows/run-local-migration.yml@master
         with:
           BASE_FOLDER: teste-db
           ENVIRONMENT: teste-db-local
@@ -24,7 +24,7 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         needs: calling-migration-local
         name: Call Migrate - STG
-        uses: fabianofm1975/actions/.github/workflows/run-db-migration.yml@master
+        uses: fabianofm1975/liquibase/.github/workflows/run-db-migration.yml@master
         with:
           ENVIRONMENT: teste-db-local
         secrets: inherit
@@ -33,7 +33,7 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         needs: calling-migration-stg
         name: Call Migrate - PRD
-        uses: fabianofm1975/actions/.github/workflows/run-db-migration.yml@master
+        uses: fabianofm1975/liquibase/.github/workflows/run-db-migration.yml@master
         with:
           ENVIRONMENT: teste-db-local
         secrets: inherit
