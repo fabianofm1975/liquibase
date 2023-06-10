@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Liquibase Update Action
-        uses: liquibase-github-actions/update
+        uses: liquibase-github-actions/update@v4.21.1
         with:
           classpath: "${{ vars.POSTGRES_DATABASE }}/migrations/changes/"
           changelogFile: "postgres.changelog.sql"  
