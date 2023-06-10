@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{ inputs.ENVIRONMENT }}
     env:
-      password: ${{ secrets.POSTGRES_PASSWORD }}
+      password: "${{ secrets.POSTGRES_PASSWORD }}"
       username: "${{ vars.POSTGRES_USER }}"
     steps:
       - name: Checkout
