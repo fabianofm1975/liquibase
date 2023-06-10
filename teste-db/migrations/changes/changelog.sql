@@ -33,3 +33,10 @@ CREATE TABLE testTable5(
 );
 --rollback DROP TABLE
 --rollback testTable5
+
+--changeset Fabiano Melo:PR_002
+CREATE TABLE testTable6(
+  columnName1 VARCHAR (355)
+);
+--rollback DROP TABLE
+--rollback testTable6
