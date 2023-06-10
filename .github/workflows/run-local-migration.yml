@@ -16,15 +16,13 @@ jobs:
         uses: actions/checkout@v3
       - name: Liquibase Update Action
         uses: liquibase-github-actions/update@v4.21.1
-        env: 
-          pg_password: ${{ secrets.POSTGRES_PASSWORD }}
         with:
           classpath: "${{ vars.POSTGRES_DATABASE }}/migrations/changes/"
           changelogFile: "postgres.changelog.sql"  
           rollbackOnError: true
           showSummary: "VERBOSE"
           username: ${{ vars.POSTGRES_USER }} 
-          password: ${{ env.pg_password }}
-          url: jdbc:postgresql://${{ vars.POSTGRES_HOST }}:${{ vars.POSTGRES_PORT }}/${{ vars.POSTGRES_DATABASE }}
+          password: ${{ secrets.POSTGRES_PASSWORD }}
+          url: "jdbc:postgresql://${{ vars.POSTGRES_HOST }}:${{ vars.POSTGRES_PORT }}/${{ vars.POSTGRES_DATABASE }}"
           
        
