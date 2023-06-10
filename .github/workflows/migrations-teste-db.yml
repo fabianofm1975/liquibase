@@ -26,7 +26,7 @@ jobs:
         name: Call Migrate - STG
         uses: fabianofm1975/actions/.github/workflows/run-db-migration.yml@master
         with:
-          ENVIRONMENT: teste-db-stg
+          ENVIRONMENT: teste-db-local
         secrets: inherit
 
   calling-migration-prd:
@@ -35,7 +35,7 @@ jobs:
         name: Call Migrate - PRD
         uses: fabianofm1975/actions/.github/workflows/run-db-migration.yml@master
         with:
-          ENVIRONMENT: teste-db-prd
+          ENVIRONMENT: teste-db-local
         secrets: inherit
 
 
