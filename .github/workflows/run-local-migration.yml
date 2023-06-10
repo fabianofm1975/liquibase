@@ -22,8 +22,5 @@ jobs:
           username: ${{ vars.POSTGRES_USER }}
           url: "jdbc:postgresql://${{ vars.POSTGRES_HOST }}:${{ vars.POSTGRES_PORT }}/${{ vars.POSTGRES_DATABASE }}"          
           rollbackOnError: true
-          showSummary: "VERBOSE"          
-          logLevel: INFO
-          headless: true
-        env: 
+          showSummary: "VERBOSE"        
           password: ${{ secrets.POSTGRES_PASSWORD }}
