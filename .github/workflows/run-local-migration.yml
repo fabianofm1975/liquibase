@@ -21,5 +21,5 @@ jobs:
           changelogFile: "postgres.changelog.sql"  
           rollbackOnError: true
           showSummary: "VERBOSE" 
-          url: "jdbc:postgresql://${{ vars.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@${{ vars.POSTGRES_HOST }}:${{ vars.POSTGRES_PORT }}/${{ vars.POSTGRES_DATABASE }}"          
+          url: "jdbc:postgresql://${{ vars.POSTGRES_HOST }}:${{ vars.POSTGRES_PORT }}/${{ vars.POSTGRES_DATABASE }}?user=${{ vars.POSTGRES_USER }}&password='${{ secrets.POSTGRES_PASSWORD }}'"          
        
