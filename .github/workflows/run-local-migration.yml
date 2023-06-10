@@ -17,7 +17,7 @@ jobs:
       - name: Liquibase Update Action
         uses: liquibase-github-actions/update@v4.21.1
         env: 
-          pg_password: "${{ secrets.POSTGRES_PASSWORD }}"
+          pg_password: ${{ secrets.POSTGRES_PASSWORD }}
         with:
           classpath: "${{ vars.POSTGRES_DATABASE }}/migrations/changes/"
           changelogFile: "postgres.changelog.sql"  
