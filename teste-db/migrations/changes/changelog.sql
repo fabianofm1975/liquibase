@@ -41,6 +41,7 @@ CREATE TABLE testTable6(
 --rollback DROP TABLE
 --rollback testTable6
 
+--changeset Fabiano Melo:PR_003
 
 CREATE TABLE testTable7(
   columnName1 VARCHAR (355)
@@ -48,4 +49,3 @@ CREATE TABLE testTable7(
 --rollback DROP TABLE
 --rollback testTable7
 
---changeset Fabiano Melo:PR_003
