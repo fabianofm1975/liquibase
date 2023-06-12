@@ -18,6 +18,7 @@ jobs:
       - name: Liquibase Update Action
         uses: liquibase-github-actions/update@v4.21.1
         with:
+            search-path: "${{ vars.POSTGRES_DATABASE }}/migrations/"
             changelogFile: "${{ vars.POSTGRES_DATABASE }}/migrations/changelog.xml"  
             rollbackOnError: true
             generateChangesetCreatedValues: true
