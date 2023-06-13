@@ -27,4 +27,6 @@ jobs:
         with:            
             changelogFile: "${{ inputs.BASE_DIR }}/migrations/changelog.xml"  
             showSummary: "VERBOSE"
-            url: "jdbc:postgresql://user=postgres&password=postgres@localhost:5432/postgres"
+            username: postgres
+            password: postgres
+            url: "jdbc:postgresql://localhost:5432/postgres"
