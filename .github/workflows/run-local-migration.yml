@@ -9,7 +9,6 @@ on:
 
 jobs:
   local-migrations:
-    name: postgres
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -28,4 +27,4 @@ jobs:
         with:            
             changelogFile: "${{ inputs.BASE_DIR }}/migrations/changelog.xml"  
             showSummary: "VERBOSE"
-            url: "jdbc:postgresql://localhost:5432/postgres?user=postgres&password=postgres"
+            url: "jdbc:postgresql://user=postgres&password=postgres@localhost:5432/postgres"
