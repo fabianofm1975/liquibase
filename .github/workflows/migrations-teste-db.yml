@@ -16,9 +16,6 @@ jobs:
   calling-migration-local:
         name: Call Migrate - Local
         uses: fabianofm1975/liquibase/.github/workflows/run-local-migration.yml@master
-        with:
-          ENVIRONMENT: teste-db-local
-        secrets: inherit
 
   calling-migration-stg:
         #if: ${{ github.event_name == 'pull_request' }}
@@ -29,14 +26,14 @@ jobs:
           ENVIRONMENT: teste-db-stg
         secrets: inherit
 
-  servicenow:
-        #if: ${{ github.event_name == 'pull_request' }}
-        needs: calling-migration-stg
-        name: Open Changes on Servicenow
-        uses: fabianofm1975/liquibase/.github/workflows/servicenow-change.yml@master
-        with:
-          ENVIRONMENT: teste-db-prd
-        secrets: inherit
+ # servicenow:
+ #       #if: ${{ github.event_name == 'pull_request' }}
+ #       needs: calling-migration-stg
+ #       name: Open Changes on Servicenow
+ #       uses: fabianofm1975/liquibase/.github/workflows/servicenow-change.yml@master
+ #       with:
+ #         ENVIRONMENT: teste-db-prd
+ #       secrets: inherit
 
   calling-migration-prd:
         #if: ${{ github.event_name == 'pull_request' }}
