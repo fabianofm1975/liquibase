@@ -18,6 +18,7 @@ jobs:
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: db_test
           POSTGRES_HOST: localhost
+          POSTGRES_PORT: 5432
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -36,6 +37,7 @@ jobs:
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: db_test
           POSTGRES_HOST: localhost
+          POSTGRES_PORT: 5432
         with:            
             changelogFile: "${{ inputs.BASE_DIR }}/migrations/changelog.xml"  
             showSummary: "VERBOSE"
