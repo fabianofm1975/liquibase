@@ -13,6 +13,11 @@ jobs:
     services:
       postgres:
         image: postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: db_test
+          POSTGRES_HOST: localhost
         ports: 
           - 5432:5432
     steps:
@@ -21,15 +26,12 @@ jobs:
 
       - name: Liquibase Update Action
         uses: liquibase-github-actions/update@v4.21.1
-        env:
-          POSTGRES_HOST: localhost
-          POSTGRES_PORT: 5432
         with:            
             changelogFile: "${{ inputs.BASE_DIR }}/migrations/changelog.xml"  
             generateChangesetCreatedValues: true
             showSummary: "VERBOSE"
-            username: pg_user 
-            password: pg_pass
-            url: "jdbc:postgresql://localhost:5432/pg_db"
+            username: postgres 
+            password: postgres
+            url: "jdbc:postgresql://localhost:5432/db_test"
           
        
