@@ -21,21 +21,30 @@ jobs:
         secrets: inherit
 
   calling-migration-stg:
-        if: ${{ github.event_name == 'pull_request' }}
+        #if: ${{ github.event_name == 'pull_request' }}
         needs: calling-migration-local
         name: Call Migrate - STG
         uses: fabianofm1975/liquibase/.github/workflows/run-db-migration.yml@master
         with:
-          ENVIRONMENT: teste-db-local
+          ENVIRONMENT: teste-db-stg
+        secrets: inherit
+
+  servicenow:
+        #if: ${{ github.event_name == 'pull_request' }}
+        needs: calling-migration-stg
+        name: Open Changes on Servicenow
+        uses: fabianofm1975/liquibase/.github/workflows/servicenow-change.yml@master
+        with:
+          ENVIRONMENT: teste-db-prd
         secrets: inherit
 
   calling-migration-prd:
-        if: ${{ github.event_name == 'pull_request' }}
+        #if: ${{ github.event_name == 'pull_request' }}
         needs: calling-migration-stg
         name: Call Migrate - PRD
         uses: fabianofm1975/liquibase/.github/workflows/run-db-migration.yml@master
         with:
-          ENVIRONMENT: teste-db-local
+          ENVIRONMENT: teste-db-prd
         secrets: inherit
 
 
