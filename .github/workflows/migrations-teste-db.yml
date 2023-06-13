@@ -16,6 +16,8 @@ jobs:
   calling-migration-local:
         name: Call Migrate - Local
         uses: fabianofm1975/liquibase/.github/workflows/run-local-migration.yml@master
+        with:
+          BASE_DIR: teste-db
 
   calling-migration-stg:
         #if: ${{ github.event_name == 'pull_request' }}
