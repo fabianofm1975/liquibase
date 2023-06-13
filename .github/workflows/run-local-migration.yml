@@ -26,6 +26,11 @@ jobs:
 
       - name: Liquibase Update Action
         uses: liquibase-github-actions/update@v4.21.1
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: db_test
+          POSTGRES_HOST: localhost
         with:            
             changelogFile: "${{ inputs.BASE_DIR }}/migrations/changelog.xml"  
             generateChangesetCreatedValues: true
