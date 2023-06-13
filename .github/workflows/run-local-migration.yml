@@ -37,6 +37,6 @@ jobs:
             showSummary: "VERBOSE"
             username: postgres 
             password: postgres
-            url: "jdbc:postgresql://postgres:postgres@localhost:5432/db_test"
+            url: "jdbc:postgresql://localhost:5432/db_test?user=postgres&password=postgres"
           
        
