@@ -21,6 +21,9 @@ jobs:
 
       - name: Liquibase Update Action
         uses: liquibase-github-actions/update@v4.21.1
+        env:
+          POSTGRES_HOST: localhost
+          POSTGRES_PORT: 5432
         with:            
             changelogFile: "${{ inputs.BASE_DIR }}/migrations/changelog.xml"  
             generateChangesetCreatedValues: true
