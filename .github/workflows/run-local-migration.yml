@@ -24,9 +24,14 @@ jobs:
         uses: actions/checkout@v3
       - name: Liquibase Update Action
         uses: liquibase-github-actions/update@v4.21.1
+        env:
+          # The hostname used to communicate with the PostgreSQL service container
+          POSTGRES_HOST: postgres
+          # The default PostgreSQL port
+          POSTGRES_PORT: 5432
         with:            
             changelogFile: "${{ inputs.BASE_DIR }}/migrations/changelog.xml"  
             showSummary: "VERBOSE"
             username: postgres
             password: postgres
-            url: jdbc:postgresql://localhost:5432/postgres
+            url: jdbc:postgresql://postgres:5432/postgres
