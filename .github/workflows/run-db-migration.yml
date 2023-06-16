@@ -7,6 +7,11 @@ on:
         required: true
         type: string
 
+      BASE_DIR:
+        description: Folder where to find the changelog file
+        required: true
+        type: string
+
 jobs:
   liquibase:
     environment: ${{ inputs.ENVIRONMENT }}
