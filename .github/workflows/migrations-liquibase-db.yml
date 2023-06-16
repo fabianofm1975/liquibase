@@ -12,24 +12,20 @@ on:
       - 'liquibase/migrations/changes/*'
   workflow_dispatch:
 
-env:
-  BASE_DIR: liquibase
-  DATABASE: teste-db
-
 jobs:
   calling-migration-local:
         name: Call Migrate - Local
         uses: fabianofm1975/liquibase/.github/workflows/run-local-migration.yml@master
         with:
-          BASE_DIR: ${{ env.BASE_DIR }}
+          BASE_DIR: liquibase
 
   calling-migration-stg:
         needs: calling-migration-local
         name: Call Migrate - STG
         uses: fabianofm1975/liquibase/.github/workflows/run-db-migration.yml@master
         with:
-          ENVIRONMENT: ${{ env.DATABASE }}-stg
-          BASE_DIR: ${{ env.BASE_DIR }}
+          ENVIRONMENT: teste-db-stg
+          BASE_DIR: liquibase
         secrets: inherit
 
   calling-migration-prd:
@@ -37,8 +33,8 @@ jobs:
         name: Call Migrate - PRD
         uses: fabianofm1975/liquibase/.github/workflows/run-db-migration.yml@master
         with:
-          ENVIRONMENT: ${{ env.DATABASE }}-prd
-          BASE_DIR: ${{ env.BASE_DIR }}
+          ENVIRONMENT: teste-db-prd
+          BASE_DIR: liquibase
         secrets: inherit
 
 
