@@ -1,15 +1,15 @@
-name: Migrations - teste-db
+name: Migrations - liquibase
 on: 
   push:  
     branches: 
       - master
     paths:
-      - 'teste-db/migrations/changes/*'
+      - 'liquibase/migrations/changes/*'
   pull_request:
     branches: 
       - master
     paths:
-      - 'teste-db/migrations/changes/*'
+      - 'liquibase/migrations/changes/*'
   workflow_dispatch:
 
 jobs:
@@ -17,7 +17,7 @@ jobs:
         name: Call Migrate - Local
         uses: fabianofm1975/liquibase/.github/workflows/run-local-migration.yml@master
         with:
-          BASE_DIR: teste-db
+          BASE_DIR: liquibase
 
   calling-migration-stg:
         #if: ${{ github.event_name == 'pull_request' }}
@@ -27,15 +27,6 @@ jobs:
         with:
           ENVIRONMENT: teste-db-stg
         secrets: inherit
-
- # servicenow:
- #       #if: ${{ github.event_name == 'pull_request' }}
- #       needs: calling-migration-stg
- #       name: Open Changes on Servicenow
- #       uses: fabianofm1975/liquibase/.github/workflows/servicenow-change.yml@master
- #       with:
- #         ENVIRONMENT: teste-db-prd
- #       secrets: inherit
 
   calling-migration-prd:
         #if: ${{ github.event_name == 'pull_request' }}
