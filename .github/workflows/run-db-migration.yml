@@ -8,15 +8,18 @@ on:
         type: string
 
 jobs:
-  migrate:
+  liquibase:
     environment: ${{ inputs.ENVIRONMENT }}
     runs-on: ubuntu-latest
     name: Run DB Migration - ${{ inputs.ENVIRONMENT }}    
-    container: 
-      image: migrate/migrate
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Run Migrate
-        run: migrate -verbose -path ${{ vars.POSTGRES_DATABASE }}/migrations/changes -database postgres://${{ vars.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@${{ vars.POSTGRES_HOST }}:${{ vars.POSTGRES_PORT }}/${{ vars.POSTGRES_DATABASE }} ${{ vars.MIGRATION_COMMAND }}
+      - name: Liquibase Update Action
+        uses: liquibase-github-actions/update@v4.21.1
+        with:            
+          changelogFile: "${{ inputs.BASE_DIR }}/migrations/changelog.xml"  
+          showSummary: "VERBOSE"
+          username: ${{ vars.POSTGRES_USER }}
+          password: ${{ secrets.POSTGRES_PASSWORD }}
+          url: jdbc:postgresql://${{ vars.POSTGRES_HOST }}:${{ vars.POSTGRES_PORT }}/${{ vars.POSTGRES_DATABASE }}

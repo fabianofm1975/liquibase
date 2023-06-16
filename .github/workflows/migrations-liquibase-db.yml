@@ -20,7 +20,6 @@ jobs:
           BASE_DIR: liquibase
 
   calling-migration-stg:
-        #if: ${{ github.event_name == 'pull_request' }}
         needs: calling-migration-local
         name: Call Migrate - STG
         uses: fabianofm1975/liquibase/.github/workflows/run-db-migration.yml@master
@@ -29,7 +28,6 @@ jobs:
         secrets: inherit
 
   calling-migration-prd:
-        #if: ${{ github.event_name == 'pull_request' }}
         needs: calling-migration-stg
         name: Call Migrate - PRD
         uses: fabianofm1975/liquibase/.github/workflows/run-db-migration.yml@master
