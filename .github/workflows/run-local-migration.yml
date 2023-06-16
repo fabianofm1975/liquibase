@@ -2,13 +2,14 @@ name: Run Local Migrations
 on: 
   workflow_call:
     inputs:
-      BASE_DIR:
-        description: Folder where to find the changelog file
+      ENVIRONMENT:
+        description: Environment from which the variables will be set
         required: true
         type: string
 
 jobs:
   local-migrations:
+    environment: ${{ inputs.ENVIRONMENT }}
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -25,7 +26,7 @@ jobs:
       - name: Liquibase Update Action
         uses: liquibase-github-actions/update@v4.21.1
         with:            
-            changelogFile: "${{ inputs.BASE_DIR }}/migrations/changelog.xml"  
+            changelogFile: "${{ vars.BASE_DIR }}/migrations/changelog.xml"  
             showSummary: "VERBOSE"
             username: postgres
             password: postgres

@@ -17,7 +17,7 @@ jobs:
         name: Call Migrate - Local
         uses: fabianofm1975/liquibase/.github/workflows/run-local-migration.yml@master
         with:
-          BASE_DIR: liquibase
+          ENVIRONMENT: teste-db-stg
 
   calling-migration-stg:
         needs: calling-migration-local
@@ -25,7 +25,6 @@ jobs:
         uses: fabianofm1975/liquibase/.github/workflows/run-db-migration.yml@master
         with:
           ENVIRONMENT: teste-db-stg
-          BASE_DIR: liquibase
         secrets: inherit
 
   calling-migration-prd:
@@ -34,7 +33,6 @@ jobs:
         uses: fabianofm1975/liquibase/.github/workflows/run-db-migration.yml@master
         with:
           ENVIRONMENT: teste-db-prd
-          BASE_DIR: liquibase
         secrets: inherit
 
 
