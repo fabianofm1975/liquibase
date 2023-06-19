@@ -1,2 +1,8 @@
---changeset fabiano:id_1
-drop table if exists teste2;
+
+			
+-- changeset Liquibase Fabiano:2
+
+create table teste2
+(
+	nome varchar(20)
+);
