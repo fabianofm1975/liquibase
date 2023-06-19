@@ -1,6 +1,5 @@
--- liquibase formatted sql
-			
--- changeset Liquibase Fabiano:1
+-- liquibase formatted sql			
+-- changeset Fabiano:1
 
 create table teste1
 (
