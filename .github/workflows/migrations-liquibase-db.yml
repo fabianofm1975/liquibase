@@ -16,7 +16,7 @@ jobs:
   pr-info:
     runs-on: ubuntu-latest
     steps:
-      - name: Get PR Info
+      - name: Get PR Information
         run: echo |
           ${{ github.event.pull_request.user.login }}
           ${{ github.event.number }}
