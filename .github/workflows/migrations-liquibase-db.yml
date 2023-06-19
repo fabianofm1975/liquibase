@@ -13,6 +13,14 @@ on:
   workflow_dispatch:
 
 jobs:
+  pr-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get PR Info
+        run: echo |
+          ${{ github.event.pull_request.user.login }}
+          ${{ github.event.number }}
+
   calling-migration-local:
         name: Call Migrate - Local
         uses: fabianofm1975/liquibase/.github/workflows/run-local-migration.yml@master
