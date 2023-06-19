@@ -17,9 +17,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get PR Information
-        run: echo |
-          ${{ github.event.pull_request.user.login }}
-          ${{ github.event.number }}
+        run: |
+          echo ${{ github.event.pull_request.user.login }}
+          echo ${{ github.event.number }}
 
   calling-migration-local:
         name: Call Migrate - Local
