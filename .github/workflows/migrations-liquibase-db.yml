@@ -8,8 +8,8 @@ on:
   pull_request:
     branches: 
       - master
-    paths:
-      - 'liquibase/migrations/changes/*'
+    #paths:
+    # - 'liquibase/migrations/changes/*'
   workflow_dispatch:
 
 jobs:
