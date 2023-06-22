@@ -1,15 +1,12 @@
 name: Migrations - liquibase
 on: 
-  push:  
-    branches: 
-      - master
-    paths:
-      - 'liquibase/migrations/changes/*'
   pull_request:
+    types: [closed]
     branches: 
       - master
     paths:
       - 'liquibase/migrations/changes/*'
+
   workflow_dispatch:
 
 jobs:
