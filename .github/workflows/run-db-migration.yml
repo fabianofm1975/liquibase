@@ -22,4 +22,4 @@ jobs:
           showSummary: "VERBOSE"
           username: ${{ vars.POSTGRES_USER }}
           password: ${{ secrets.POSTGRES_PASSWORD }}
-          url: jdbc:postgresql://${{ vars.POSTGRES_HOST }}:${{ vars.POSTGRES_PORT }}/${{ vars.POSTGRES_DATABASE }}?sslmode=prefer
+          url: jdbc:postgresql://${{ vars.POSTGRES_HOST }}:${{ vars.POSTGRES_PORT }}/${{ vars.POSTGRES_DATABASE }}?sslmode=disable
