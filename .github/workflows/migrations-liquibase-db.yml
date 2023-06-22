@@ -31,10 +31,3 @@ jobs:
         with:
           ENVIRONMENT: teste-db-prd
         secrets: inherit
-
-
-
-
-
-
-
