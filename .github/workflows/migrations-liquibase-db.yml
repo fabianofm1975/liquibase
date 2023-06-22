@@ -1,26 +1,15 @@
 name: Migrations - liquibase
 on: 
-  push:  
+  pull_request:
+    types: [closed]
     branches: 
       - master
     paths:
       - 'liquibase/migrations/changes/*'
-  pull_request:
-    branches: 
-      - master
-    #paths:
-    # - 'liquibase/migrations/changes/*'
+
   workflow_dispatch:
 
 jobs:
-  pr-info:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get PR Information
-        run: |
-          echo ${{ github.event.pull_request.user.login }}
-          echo ${{ github.event.number }}
-
   calling-migration-local:
         name: Call Migrate - Local
         uses: fabianofm1975/liquibase/.github/workflows/run-local-migration.yml@master
@@ -42,10 +31,3 @@ jobs:
         with:
           ENVIRONMENT: teste-db-prd
         secrets: inherit
-
-
-
-
-
-
-
