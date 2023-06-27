@@ -1,7 +1,7 @@
 name: Migrations - liquibase
 on: 
   pull_request:
-    types: [closed]
+    types: [opened,closed]
     branches: 
       - master
     paths:
@@ -17,6 +17,7 @@ jobs:
           ENVIRONMENT: teste-db-stg
 
   calling-migration-stg:
+        if: github.event.pull_request.merged == true
         needs: calling-migration-local
         name: Call Migrate - STG
         uses: fabianofm1975/liquibase/.github/workflows/run-db-migration.yml@master
@@ -25,6 +26,7 @@ jobs:
         secrets: inherit
 
   calling-migration-prd:
+        if: github.event.pull_request.merged == true
         needs: calling-migration-stg
         name: Call Migrate - PRD
         uses: fabianofm1975/liquibase/.github/workflows/run-db-migration.yml@master
